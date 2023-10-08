@@ -1,9 +1,10 @@
 import fs from 'fs/promises';
+import { resolve } from 'path'
 
 export const storeFile = async (fileDest, data, resourceUrl) => {
     const fileName = getOutputFileName(resourceUrl)
     try {
-        const filePath = getFilePath(fileDest, fileName)
+        const filePath = getFilePath(resolveDestPath(fileDest), fileName)
         await fs.writeFile(filePath, data);
         console.log(filePath)
         return { filePath }
@@ -18,4 +19,8 @@ const getOutputFileName = (resourceUrl) => {
 
 const getFilePath = (fileDest, fileName) => {
     return `${fileDest}/${fileName}`
+}
+
+const resolveDestPath = (fileDest) => {
+    return resolve(fileDest)
 }

@@ -1,7 +1,7 @@
 import { fetchResource } from "./modules/resources-upload.js";
 import { storeFile } from "./modules/files-store.js";
 
-export const pageLoader = async (pageUrl, fileDest) => {
+const pageLoader = async (pageUrl, fileDest) => {
     const fileData = await fetchResource(pageUrl)
     if (fileDest) {
         return storeFile(fileDest, fileData, pageUrl)
@@ -10,5 +10,7 @@ export const pageLoader = async (pageUrl, fileDest) => {
         return storeFile(defaultDest, fileData, pageUrl)
     }
 }
+
+export default pageLoader
 
 
