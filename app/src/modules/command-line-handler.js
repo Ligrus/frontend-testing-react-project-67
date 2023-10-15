@@ -2,10 +2,10 @@ import { program } from "commander";
 
 export const getCommandLineArgs = () => {
     program
+        .allowUnknownOption()
         .option('-o, --output <string>')
         .option('-u, --url <string>')
-
-    program.parse(process.argv);
+        .parse(process.argv);
 
     const passedOptions = program.opts()
 
