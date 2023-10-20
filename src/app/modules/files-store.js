@@ -13,7 +13,7 @@ export const storeFile = async (fileDest, data, resourceUrl) => {
     }
 }
 
-const getOutputFileName = (resourceUrl) => {
+export const getOutputFileName = (resourceUrl) => {
     return resourceUrl.replace(/^https?:\/\//, "").replace(/[./]/g, '-') + '.html'
 }
 
